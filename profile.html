@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/53ff950d67.js" crossorigin="anonymous"></script>
+    <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">        
+    <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" href="css.css">
+    <title>profile</title>
+</head>
+<body>
+    <a class="home" href="#">dribbble</a>
+    <div class="container">
+        <section class="profile">
+                     <div class="header">
+        <h1 class="profile-heading">Welcome! Lets Create your profile</h1>
+            <p>Let Others get to know you better! You can do these later</p>
+        </div>
+        <section class="profile-details">
+            <form action="profile.php" method="post" enctype="multipart/form-data" id="profile-form">
+
+                <div class="header-2">
+                    <h2>Add an avatar</h2>
+                </div>
+                <div class="custom-file-button">
+                    <label class="input-label" id="input-label" for="avatar">Choose image</label>
+                </div>
+                <div class="toggle">
+                    <div class="toggle-button" id="toggle-button"><i class="fa-solid fa-greater-than"></i></div>
+                    <div id="toggle-text" class="toggle-text" style="display: none;"><a href="#"> Or choose one of defaults</a></div>
+                    <div id="default-images" style="display: none;" class="default-images">
+                        <h3>Choose a default profile picture:</h3>
+                        <div class="default-profile-pics">
+                            <img  src="images/001_4x.png" alt="Default Profile Picture 1" class="default-pic">
+                            <img src="images/2f934789-8e2d-4d0f-8b1c-a0feec4c390a.png" alt="Default Profile Picture 2" class="default-pic">
+                            <img src="images/4c01c743-4829-42a5-b9a0-445382aa71d4.png" alt="Default Profile Picture 3" class="default-pic">
+                            <!-- Add more default profile pictures here -->
+                        </div>
+                    </div>
+                </div>
+                <input class="image" type="file"  id="avatar" name="avatar" accept="image/*">
+                    <div class="preview" id="preview">
+                        <i class="fa fa-camera"></i>
+                    </div>
+                <section class="loc">
+                    <label for="location"> Add your location</label>
+                    <input type="text" id="location" name="location" placeholder="Enter your location" >
+                    <span class="underline"></span>
+                </section>
+                <button type="submit" id="next-button" disabled>Next</button>
+                <div id="instruction">Or press Return</div>
+            </form>
+        </section>
+    </div>
+        </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('profile-form');
+            const avatarInput = document.getElementById('avatar');
+            const preview = document.getElementById('preview');
+            const toggleButton = document.getElementById('toggle-button');
+            const toggleText = document.getElementById('toggle-text');
+            const defaultImages = document.getElementById('default-images');
+            const locationInput = document.getElementById('location');
+            const nextButton = document.getElementById('next-button');
+            const instruction = document.getElementById('instruction')
+            const inputFileLabel = document.getElementById('input-label');
+
+            
+            
+
+            // Function to handle preview click
+            function handlePreviewClick() {
+                avatarInput.click(); // Trigger the file input when clicked on the preview
+            }
+
+            // Function to handle file upload
+function handleFileUpload() {
+    const uploadedImage = preview.querySelector('img');
+    if (uploadedImage) {
+        // Change cursor style to default
+        preview.style.cursor = 'default';
+        // Disable file input
+        avatarInput.disabled = false;
+        // Remove click event listener from preview container
+        preview.removeEventListener('click', handlePreviewClick);
+    } else {
+        // Change cursor style to pointer
+        preview.style.cursor = 'pointer';
+        // Enable file input
+        avatarInput.disabled = false;
+        // Add click event listener to preview container
+        preview.addEventListener('click', handlePreviewClick);
+    }
+}
+
+
+            // Function to toggle the visibility of default images
+            function toggleDefaultImages() {
+                defaultImages.style.display = defaultImages.style.display === 'none' ? 'block' : 'none';
+            }
+
+               // Function to check if all required fields are filled
+function checkFields() {
+    const isImageUploaded = preview.querySelector('img') !== null;
+    const isLocationFilled = locationInput.value.trim() !== '';
+
+    if (isImageUploaded && isLocationFilled) {
+        nextButton.removeAttribute('disabled');
+        nextButton.classList.remove('disabled'); // Remove disabled class
+        nextButton.style.backgroundColor = '#ff217a';
+        nextButton.style.cursor='pointer';
+        instruction.style.display = 'block';
+    } else {
+        nextButton.setAttribute('disabled', true);
+        nextButton.classList.add('disabled'); // Add disabled class
+        nextButton.style.backgroundColor = '#ff217a6e';
+        instruction.style.display = 'none';
+    }
+}
+
+// Function to handle file input change
+function handleFileInputChange(e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        const img = document.createElement('img');
+        img.src = event.target.result;
+        img.onload = function() {
+            const MAX_WIDTH = 200; // Set the maximum width of the preview image
+            const MAX_HEIGHT = 200; // Set the maximum height of the preview image
+            let width = img.width;
+            let height = img.height;
+
+            if (width > height) {
+                if (width > MAX_WIDTH) {
+                    height *= MAX_WIDTH / width;
+                    width = MAX_WIDTH;
+                }
+            } else {
+                if (height > MAX_HEIGHT) {
+                    width *= MAX_HEIGHT / height;
+                    height = MAX_HEIGHT;
+                }
+            }
+
+            img.width = width;
+            img.height = height;
+
+            // Clear previous previews
+            const preview = document.getElementById('preview');
+            if (preview.firstChild) {
+                preview.removeChild(preview.firstChild);
+            }
+
+            // Append the image to the preview container
+            preview.appendChild(img);
+
+            // Change the label text to "Change image"
+            const inputFileLabel = document.getElementById('input-label');
+            if (inputFileLabel) {
+                inputFileLabel.textContent = 'Change image';
+            }
+
+            // Change the text of the file input button to "Choose Image"
+            const avatarInput = document.getElementById('avatar');
+            if (avatarInput) {
+                avatarInput.setAttribute('value', 'Choose Image');
+            }
+
+            // Add a class to the preview container to remove the dashed border
+            preview.classList.add('image-uploaded');
+
+            // Call the function to handle file upload
+            handleFileUpload();
+
+            // Check fields after image upload
+            checkFields();
+        };
+    };
+
+    reader.readAsDataURL(file);
+}
+
+// Event listener for file input change
+avatarInput.addEventListener('change', handleFileInputChange);
+
+// Add event listener to the preview container
+preview.addEventListener('click', handlePreviewClick);
+
+            // Add click event listener to the toggle text
+            toggleText.addEventListener('click', function() {
+                toggleDefaultImages();
+            });
+
+            // Add click event listener to the toggle button
+            toggleButton.addEventListener('click', function() {
+                // Toggle the visibility of the text
+                if (toggleText.style.display === 'none') {
+                    toggleText.style.display = 'block';
+                } else {
+                    toggleText.style.display = 'none';
+                }
+
+                // Toggle the rotation of the button
+                toggleButton.classList.toggle('rotate');
+
+                // Toggle the "active" class for the text with a delay to match transition duration
+                setTimeout(function() {
+                    toggleText.classList.toggle('active');
+                }, 500);
+
+                // Close default images
+                defaultImages.style.display = 'none';
+            });
+
+  // Add click event listeners to default images
+const defaultPics = document.querySelectorAll('.default-pic');
+defaultPics.forEach(function(pic) {
+    pic.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default action of clicking on an image
+
+        const imgSrc = pic.getAttribute('src');
+        const imgAlt = pic.getAttribute('alt');
+
+        // Create new image element
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = imgAlt;
+
+        // Handle image load event
+        img.onload = function() {
+            const MAX_WIDTH = 200;
+            const MAX_HEIGHT = 200;
+            let width = img.width;
+            let height = img.height;
+
+            // Resize the image if necessary
+            if (width > MAX_WIDTH || height > MAX_HEIGHT) {
+                const aspectRatio = width / height;
+                if (aspectRatio > 1) {
+                    width = MAX_WIDTH;
+                    height = width / aspectRatio;
+                } else {
+                    height = MAX_HEIGHT;
+                    width = height * aspectRatio;
+                }
+            }
+
+            // Set the resized dimensions
+            img.width = width;
+            img.height = height;
+
+            // Clear previous previews
+            const preview = document.getElementById('preview');
+            while (preview.firstChild) {
+                preview.removeChild(preview.firstChild);
+            }
+
+            // Append the image to the preview container
+            preview.appendChild(img);
+
+            // Change the label text to "Change image"
+            const inputFileLabel = document.getElementById('input-label');
+            if (inputFileLabel) {
+                inputFileLabel.textContent = 'Change image';
+            }
+
+            // Reset file input
+            const avatarInput = document.getElementById('avatar');
+            if (avatarInput) {
+                avatarInput.value = '';
+            }
+
+            // Hide default images
+            const defaultImages = document.getElementById('default-images');
+            if (defaultImages) {
+                defaultImages.style.display = 'none';
+            }
+
+            // Add a class to the preview container to remove the dashed border
+            preview.classList.add('image-uploaded');
+
+            // Call the function to handle file upload (to enable/disable file input and preview click functionality)
+            handleFileUpload();
+
+            // Check fields after image upload
+            checkFields();
+
+            // Submit form data
+            submitFormData();
+        };
+    });
+});
+
+
+            // Event listener for input event on location input
+            locationInput.addEventListener('input', checkFields);
+
+            // Event listener for keydown event on location input
+            locationInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Prevent default form submission behavior
+                    nextButton.click(); // Trigger click event on "Next" button
+                }
+            });
+
+// // Event listener for change event on image upload input
+// avatarInput.addEventListener('change', function() {
+//     const file = avatarInput.files[0];
+//     const reader = new FileReader();
+
+//     reader.onload = function() {
+//         const img = document.createElement('img');
+//         img.src = reader.result;
+
+//         // Set onload event for the image
+//         img.onload = function() {
+//             // Clear previous previews
+//             preview.innerHTML = '';
+            
+//             // Append the new image to the preview container
+//             preview.appendChild(img);
+
+//             // Change the label text to "Change image"
+//             inputFileLabel.textContent = 'Change image';
+
+//             // Reset file input
+//             avatarInput.value = '';
+
+//             // Add a class to the preview container to remove the dashed border
+//             preview.classList.add('image-uploaded');
+
+//             // Call the function to handle file upload (to enable/disable file input and preview click functionality)
+//             handleFileUpload();
+
+//             // Check fields after image upload
+//             checkFields();
+//         };
+//     };
+
+//     // Read the uploaded file as data URL
+//     reader.readAsDataURL(file);
+// });
+
+
+        });
+        window.addEventListener('pageshow', function(event) {
+            var historyTraversal = event.persisted || 
+                                  (typeof window.performance !== 'undefined' && 
+                                      window.performance.navigation.type === 2);
+            if (historyTraversal) {
+                window.location.reload();
+            }
+        });
+
+        
+   
+        document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('profile-form');
+    const avatarInput = document.getElementById('avatar');
+    const locationInput = document.getElementById('location');
+    const instruction = document.getElementById('instruction');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission behavior
+
+        const formData = new FormData(form); // Serialize form data
+
+        // Send AJAX request to PHP endpoint
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'profile.php'); // Replace 'profile.php' with your PHP endpoint
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    // Reset form and display success message
+                    form.reset();
+                    instruction.textContent = response.message;
+                    instruction.style.color = 'green';
+
+                    // Redirect to selection.html after successful form submission
+                    window.location.href = 'selection.html';
+                } else {
+                    // Display error message
+                    instruction.textContent = response.message;
+                    instruction.style.color = 'red';
+                }
+            } else {
+                // Display error message for non-200 status code
+                instruction.textContent = 'Error: Server returned status ' + xhr.status;
+                instruction.style.color = 'red';
+            }
+        };
+        xhr.onerror = function() {
+            // Display error message for network errors
+            instruction.textContent = 'Error: Failed to send request';
+            instruction.style.color = 'red';
+        };
+        xhr.send(formData); // Send FormData object with the request
+    });
+});
+
+
+        
+    </script>
+    
+    
+    
+</body>
+</html>

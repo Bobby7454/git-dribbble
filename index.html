@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dribbble</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/53ff950d67.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <main>
+        <div class="design">
+            <div class="left-slide">
+                <a class="logo" href="#">dribbble</a>
+                <h1>
+                    Discover the world's top Designers &amp; Creatives.
+                </h1>
+                <img src="images/001_4x.png" alt="desingn">
+                <footer class="designer-name"><p>Art by <a href="#">Bobby</a></p></footer>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="details">
+                <div class="alternative">
+                    <p >Already a member? <a href="#">Sign In</a></p>
+                </div>
+                <h1>Sign Up to Dribbble</h1>
+                <p class=" hidden" style="color: red;">. Username has already been taken</p>                    
+                <form id="signupForm" class="signupForm" action="form.php" method="post" >
+                    <div class="user">
+                        <div class="input-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required/>
+                        </div>
+                        <div class="input-group">
+                            <label for="username">
+                                <i class="fa-solid fa-triangle-exclamation" style="color: red;"></i> Username
+                            </label>
+                            <input type="text" id="username" name="username" required/>
+                        </div>
+                    </div>
+                    <div class="input-form">
+                        <div class="email">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="input-form">
+                        <div class="password">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" pattern=".{6,}" required title="6 characters minimum" placeholder="6+ characters">
+                        </div>
+                    </div>
+                    <div class="terms">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Creating an account means you're okay with our,<a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a> and our default <a href="#">Notification Settings.</a></label>
+                    </div>      
+                    <button type="submit">Create Account</button>
+                </form>
+                        <footer class="terms-of-service">
+                        <p>This site is protected by the reCAPTCHA  and the Google <a href="#">Privacy Policy </a>and <a href="#">Terms of Service</a> apply.</p>
+                    </footer>
+            </div>
+        </div>
+        
+        </div>
+    </main>
+    <script>
+
+
+
+// Function to handle form submission
+function handleFormSubmission(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const nameInput = document.getElementById('name');
+    const usernameInput = document.getElementById('username');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+
+    const name = nameInput.value.trim();
+    const username = usernameInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    if (!username || !email || !name) {
+        // Handle empty fields
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('username', username);
+    formData.append('email', email);
+    formData.append('password', password);
+
+    fetch('form.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.error) {
+            toggleErrorVisibility(true);
+        } else if (data.success) {
+            toggleErrorVisibility(false);
+            window.location.href = "profile.html";
+        }
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+        // Handle error gracefully
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const signupForm = document.getElementById('signupForm');
+    
+    if (signupForm) {
+        signupForm.addEventListener('submit', handleFormSubmission);
+    }
+});
+
+function toggleErrorVisibility(isVisible, usernameExists) {
+    const errorMessage = document.querySelector('.hidden');
+    const errorIcon = document.querySelector('.fa-triangle-exclamation');
+    const usernameInput = document.getElementById('username');
+    
+    if (errorMessage && errorIcon && usernameInput) {
+        errorMessage.classList.toggle('hidden', !isVisible);
+        errorIcon.style.display = isVisible ? 'inline' : 'none';
+        
+        // Change background color and text color of the username input when username exists
+        if (isVisible && usernameExists) {
+            usernameInput.style.backgroundColor = 'pink';
+            usernameInput.style.color = 'red';
+        } else {
+            // Reset background color and text color if username does not exist or error is hidden
+            usernameInput.style.backgroundColor = '';
+            usernameInput.style.color = '';
+        }
+    }
+}
+
+    </script>
+    
+
+</body>
+</html>

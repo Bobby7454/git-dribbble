@@ -1,0 +1,740 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+}
+main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    width: 100%;
+}
+.design{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    width: 38%;
+    height: auto;
+    background-color:#f1d084;
+    padding: 90px 0 30px 0;
+
+}
+.left-slide{
+    overflow: hidden;
+    height: auto;
+}
+.logo {
+    color: #a8843a;
+    text-decoration: none;
+    font-family: "Sacramento";
+    font-weight: 600;
+    font-style: normal;
+    font-size: 2.3rem;
+    padding: 125px;
+}
+.left-slide img{
+    width: 100%;
+    height: auto;
+    margin:  auto;
+    left: 5%;
+}
+.left-slide h1 {
+    font-size: 2rem;
+    color: #815d11;
+    margin-bottom: 20px;
+    margin: 0 auto;
+    height: auto;
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    padding:20px 0 0 125px;
+}
+.designer-name  {
+    color:#815d11;
+    padding:0 0 0 125px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    margin: 10px 0;
+}
+footer a{
+    color: #815d11;
+}
+
+.right-side{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 62%;
+    padding: 0 250px;
+}
+
+
+.right-side .alternative p {
+    position: absolute;
+    top: 5px;
+    right: 40px;
+    margin-left: 120px;
+    z-index: 1;
+    text-align: justify;
+    font-size: 1rem;
+    max-width: 500px;
+
+}
+
+.right-side a{
+    text-decoration: none;
+    color: #503fa6;
+    font-family: "Roboto", sans-serif;
+}
+.right-side h1{
+    font-family: "Roboto", sans-serif;
+    font-weight:  700;
+    font-size: 1.5rem;
+    padding: 30px 0;
+}
+
+form.signupForm{
+    padding-top: 20px;
+}
+.user{
+    display: flex;
+    flex-direction: column;
+    flex-direction: row;
+    column-gap: 20px;
+}
+.input-group{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.hidden {
+    display: none;
+}
+
+.input-group i{
+    display:none;
+}
+.input-group input{
+    width: 100%;
+}
+.input-form{
+    margin-top: 40px;
+}
+.input-form label,.input-group label{
+    display: block;
+    margin-bottom: 5px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+}
+label{
+    font-family: "Roboto", sans-serif;
+    font-size: .8rem;
+}
+.details input{
+    outline: none;
+    border: transparent;
+    background-color: #e9e9e9;
+    height: 35px;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+input[type="checkbox"] {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    background-color: blue;
+}
+.terms{
+    padding: 20px 0;
+}
+button{
+    text-align: center;
+    width: 160px;
+    height: 35px;
+    border: transparent;
+    background-color: #ff217a;
+    color:white;
+    font-family: "Roboto",sans-serif;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.terms-of-service{
+    position: relative;
+    left: 0;
+    color: gray;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.terms-of-service p{
+    font-size: .8rem;
+}
+
+@media (max-width: 768px) {
+    .logo,.left-slide h1,.designer-name {
+        padding-left: 5px;
+    }
+    .design{
+        width: 100%;
+    }
+}
+
+/* Your existing CSS code */
+
+@media(max-width:1144px){
+    .right-side{
+        width: 95%;
+        padding: 0 15px;
+        margin-left: 5px;
+    }
+    .terms-of-service{
+        width: auto;
+    }
+    .design{
+        width: 100%;
+    }
+}
+
+
+/* profile page */
+
+.home{
+    position:absolute;
+    font-family: "Sacramento";
+    padding: 10px;
+    margin: 10px;
+    color:  #ff217a;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 600;
+    border-radius: 10px;
+}
+section .profile{
+    width: 100%;
+    height: 100%;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 25px;
+    overflow: hidden;
+    width: 100%;
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .profile{
+    width: 500px;
+    padding: 0 15px;
+  }
+  .header{
+    margin-bottom: 50px;
+    padding: 0 10px;
+}
+  .header h1{
+    font-family: 'Roboto';
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+  }
+.header p{
+    color: grey;
+    font-family: "roboto";
+    font-size: 1rem;
+}
+.header-2 h2{
+    font-family: "roboto";
+    margin-bottom: 30px;
+}
+form #profile-form{
+    padding:  0 50px;
+}
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-button input[type="file"]::-webkit-file-upload-button {
+    display: none;
+}
+
+.custom-file-button input[type="file"]::file-selector-button {
+    display: none;
+}
+.custom-file-button{
+    position: absolute;
+    padding-left: 20%;
+    padding-top: 30px;
+    z-index: 1;
+}
+.custom-file-button  label{
+    position:relative   ;
+    display: inline-block;
+    border: 1px grey solid;
+    font-family: "Roboto",sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.custom-file-button label:hover{
+    background-color: rgb(212, 212, 212);
+}
+.toggle{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    padding: 85px  0 0 19.2%;
+    margin-left: 12px;
+    height: auto;
+    margin: 10px;
+}
+.toggle-button {
+    position:relative;
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+    bottom: 20%;
+    transition: transform 0.5s ease; 
+    transform: rotatez(180deg);
+}
+.toggle-button.rotate  {
+    transform: rotate(360deg);
+    transition: all ease-in-out .5s;
+}
+.toggle-text {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+
+}
+.toggle-text.active {
+    max-height: 100px; /* Adjust to fit your content */
+    transition-delay:.1S;
+    opacity: 1;
+    transition: all  ease-in-out 0.5s;
+}
+.toggle-text a{
+    text-decoration: none;
+    color: grey;
+    position: relative;
+    padding-left: 5px;
+    width:0; 
+    transition: .3s ease all;
+    margin-bottom: 10px;
+}
+@media only screen and (max-width: 900px) {
+    .default-images, .project-name {
+        display: none;
+    }
+}
+.preview {
+    border: 2px dashed grey; /* Default dashed border */
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: width 0.3s ease, height 0.3s ease; /* Smooth transition for width and height changes */
+}
+
+.preview img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease, height 0.3s ease; /* Smooth transition for width and height changes */
+}
+.preview .image-uploaded{
+    display: none;
+    cursor: default;
+}
+.loc {
+    padding: 40px 0;
+    width: 100%;
+    z-index: 5;
+    height: auto;
+    margin-top: 10px;
+    transition: all ease-in-out .5s;
+
+}
+.loc label{
+    display: block;
+    font-family: "roboto";
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 30px 0;
+}
+.loc input{
+    font-family: "roboto";
+    border: none;
+    border-bottom: 1px solid rgb(184, 184, 184);
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    z-index: 2;
+    padding: 0 0 10px 5px;
+}
+.underline{
+    position: relative;
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: #100e0e; /* Initial underline color */
+    transition: all 0.3s ease
+}
+#location:focus  + .underline  {
+    width: 100%; /* Change the underline color when input is focused */
+}
+#profile-form button{
+    background-color: #ff217a6e;
+}
+#instruction{
+    display: none;
+    color: grey;
+    padding: 8px 25px 0 0;
+
+}
+.default-images {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    color: white;
+    height: auto;
+    border-radius: 10px;
+    background-color: rgb(40, 40, 40);
+    transition: opacity 0.5s ease, visibility 0.5s ease-in-out; /* Smooth transition for opacity and visibility */
+    padding: 20px;
+    margin-bottom: 10px;
+    
+}
+.default-profile-pics{
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.default-pic{
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin: 10% 10% 0 0;
+    border-radius: 50%;
+    transition:  all 0.2s ease-in-out;
+    cursor: pointer;
+}
+#profile-form button {
+    background-color: #ff217a6e;
+    cursor: not-allowed;
+}
+
+.default-pic:hover{
+    transform: scale(1.5);
+}
+@media screen and (max-width:760px) {
+    .default-images{
+        width: 50%;
+        height: auto;
+    }
+    }
+    
+/* Media queries for responsive resizing */
+@media screen and (max-width: 800px) {
+    .preview {
+        width: 150px; /* Adjust width for smaller screens */
+        height: 150px; /* Adjust height for smaller screens */
+        left: 20px;
+    }
+}
+
+@media screen and (max-width:985px){
+    .toggle{
+        padding: 25% 0 0 10px;
+    }
+    .custom-file-button{
+        position: relative;
+        padding-bottom: 5%;
+        padding-left: 2 0%;
+
+    }
+    .profile-details{
+        display: flex;
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 600px) {
+    .preview {
+        width: 100px; /* Further adjust width for even smaller screens */
+        height: 100px; /* Further adjust height for even smaller screens */
+        left: 55px;
+    }
+    .custom-file-button{
+        padding: 10px;
+        margin-left: 40px;
+    }
+}
+@media screen and (max-width:401px){
+    .toggle{
+        padding: 0 0 0 10px;
+        margin-top: 105px;
+    }
+
+}
+/* Original CSS styles here */
+
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+    .loc {
+        padding: 20px 0; /* Adjust padding for smaller screens */
+    }
+    .loc label {
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+    }
+    .loc input {
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+}
+
+.preview.image-uploaded {
+    border: none; /* Remove the dashed border when an image is uploaded */
+}
+i{
+    color: gray;
+}
+
+/* looking for */
+
+.describing{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 20px 10px;
+}
+header.about-you{
+    padding: 30px 0;
+    font-family: "roboto";
+    line-height: 1.4;
+}
+
+.about-you h1{
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #000;
+    font-weight: 800;
+    padding: 10px  0;
+}
+.about-you p{
+    font-size: 1rem;
+    color:gray;
+}
+
+
+.selection{
+    width: 100%;
+    padding: 50px 20%;
+}
+.check-box{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items:center;
+    row-gap: 65px;
+
+}
+.checkbox-content p{
+    position: absolute;
+    opacity: 0;
+
+}
+img.design-img {
+    width: 100%;
+    max-width: 200px;
+    max-height: 100px;
+    height: auto;
+    margin:  auto;
+    left: 5%;
+    margin-bottom: 30px;
+    transition: all ease-in 0.3s;
+       
+}
+.checkbox-content h2{
+    font-family:'roboto';
+    transition: all ease-in 0.3s;
+    font-size: 1.1rem;
+    font-weight: 800;
+    
+}
+.custom-checkbox{
+    border: .5px rgb(221, 221, 221) solid;
+    border-radius: 10px;
+    padding: 30px;
+    width: 280px;
+    height: 300px;
+    font-family: 'roboto';
+    max-width: 350px;
+
+}
+.info p{
+    font-size: 1rem;
+    font-family: "roboto";
+    font-weight: 700;
+    padding: 50px 0;
+
+}
+  /* Hide the default checkbox */
+  .custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+  
+  /* Style the custom checkboxes */
+.checkmark {
+    position:relative;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #fff; /* White background */
+    border-radius: 50%; /* Rounded corners */
+    border: 1px solid #ccc; /* Gray border */
+    margin-top: 20px;
+    transition: height ease-in 0.3s;
+  }
+  
+  .checkbox-content.active p .checkmark{
+      margin-top: 20px;
+  }
+  /* Change the custom checkbox background color when checked */
+  .custom-checkbox input:checked + .checkmark {
+    background-color: #ff217a; /* Pink color */
+  }
+  
+  /* Create the checkmark icon */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark icon when the custom checkbox is checked */
+  .custom-checkbox input:checked + .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark icon */
+  .checkmark:after {
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  /* Style the text next to the checkbox */
+  .checkbox-content {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  /* Style the images */
+  .design-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  /* Existing CSS styles */
+
+/* New styles for transitions */
+.checkbox-content.active h2 {
+    transform: translateY(-90px); /* Adjust as needed */
+    transition: transform 0.4s ease;
+}
+
+.checkbox-content.active img.design-img {
+    transform: translateY(-90px); /* Adjust as needed */
+    transition: transform 0.3s ease-in;
+}
+.custom-checkbox.active-border {
+    border: 2px solid #ff217a; /* Change this to your desired border color */
+    transition: all ease-in .3s;
+}
+
+
+
+.checkbox-content.active p {
+    display: block;
+    opacity: 1;
+    margin-top: 87px;
+    transition: opacity 1s ease;
+    font-size: .8rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: gray;
+    font-family: 'roboto';
+    cursor: text;
+    
+
+}
+
+button[type="submit"]{
+    background-color:pink;
+
+    /* Add any other styles for the disabled button */
+}
+@media screen and (max-width:768px){
+    .checkbox-content.active p{
+        font-size: .7rem;
+    }
+}
+@media screen and (max-width:360px){
+    .checkmark{
+        margin-top: 50px;
+    }
+}
+@media screen and (max-width:295px){
+
+
+    .checkbox-content h2{
+        font-size: 1rem;
+    }
+    .checkbox-content p{
+        font-size: .6rem;
+    }
+}
+
+
+/* Adjustments to other styles may be needed */
